@@ -24,4 +24,4 @@ hs_err_pid*
 replay_pid*
 
 # 忽略 Spring Boot 設定檔
-application.properties
+# application.properties
