@@ -12,7 +12,7 @@ import com.example.demo.service.FinancialGoalService;
 
 @RestController
 @RequestMapping("/api/goals") // 💡 這是前端發球機要瞄準的網址
-@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true") // 💡 打開跨域防護罩，允許 Angular 連線
+@CrossOrigin(origins = "${cors.allowed.origins}", allowCredentials = "true") // 💡 打開跨域防護罩，允許 Angular 連線
 public class FinancialGoalController {
 
     @Autowired

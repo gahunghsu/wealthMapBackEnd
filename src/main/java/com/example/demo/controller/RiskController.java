@@ -32,7 +32,7 @@ import jakarta.validation.Valid;
 
 @RequestMapping("/api/risk")
 
-@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
+@CrossOrigin(origins = "${cors.allowed.origins}", allowCredentials = "true")
 
 public class RiskController {
 

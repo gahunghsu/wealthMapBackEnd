@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/assets") 
-@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true") 
+@CrossOrigin(origins = "${cors.allowed.origins}", allowCredentials = "true") 
 public class AssetController {
 
     @Autowired

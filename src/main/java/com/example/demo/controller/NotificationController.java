@@ -35,7 +35,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/notifications")
-@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
+@CrossOrigin(origins = "${cors.allowed.origins}", allowCredentials = "true")
 public class NotificationController {
 	
 	@Configuration
@@ -44,7 +44,7 @@ public class NotificationController {
 	    @Override
 	    public void addCorsMappings(CorsRegistry registry) {
 	        registry.addMapping("/**")
-	                .allowedOrigins("http://localhost:4200") // ✅ 必須明確指定，不能用 "*"
+	                .allowedOrigins("${cors.allowed.origins}") // ✅ 必須明確指定，不能用 "*"
 	                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
 	                .allowedHeaders("*")
 	                .allowCredentials(true) // ✅ 這行就是解決你報錯的關鍵

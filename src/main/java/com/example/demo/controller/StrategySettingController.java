@@ -34,7 +34,7 @@ import com.example.demo.dto.StrategyResponseDTO;
 
 @RestController
 @RequestMapping("/api/strategy-set")
-@CrossOrigin(origins = "http://localhost:4200") // 允許 Angular 存取
+@CrossOrigin(origins = "${cors.allowed.origins}") // 允許 Angular 存取
 public class StrategySettingController {
 
 	@Autowired

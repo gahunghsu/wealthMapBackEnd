@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/cash-flows")
-@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
+@CrossOrigin(origins = "${cors.allowed.origins}", allowCredentials = "true")
 public class CashFlowController {
 
     @Autowired

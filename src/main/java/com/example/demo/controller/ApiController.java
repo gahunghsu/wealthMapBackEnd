@@ -29,7 +29,7 @@ import com.example.demo.vo.AppResponse;
 import com.example.demo.vo.RspCode;
 @RestController
 @RequestMapping("/api/strategy-api")
-@CrossOrigin(origins = "http://localhost:4200") // 允許 Angular 存取
+@CrossOrigin(origins = "${cors.allowed.origins}") // 允許 Angular 存取
 public class ApiController {
 	
 	//	股價測試

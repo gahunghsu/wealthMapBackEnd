@@ -15,7 +15,7 @@ import com.example.demo.service.HealthService;
 
 @RestController
 @RequestMapping("/api/health")
-@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
+@CrossOrigin(origins = "${cors.allowed.origins}", allowCredentials = "true")
 public class HealthController {
 
 	@Autowired

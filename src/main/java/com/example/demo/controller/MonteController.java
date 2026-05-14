@@ -11,7 +11,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/monte")
-@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*") 
+@CrossOrigin(origins = "${cors.allowed.origins}", allowedHeaders = "*") 
 public class MonteController {
 	
     @Autowired

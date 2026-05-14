@@ -24,7 +24,7 @@ import com.example.demo.vo.RspCode;
 */
 @RestController
 @RequestMapping("/api/portfolio")
-@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
+@CrossOrigin(origins = "${cors.allowed.origins}", allowCredentials = "true")
 public class PortfolioController {
 
     @Autowired

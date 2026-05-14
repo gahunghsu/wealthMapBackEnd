@@ -20,7 +20,7 @@ import com.example.demo.service.LiabilityService;
 
 @RestController
 @RequestMapping("/api/liabilities") // 💡 前端呼叫的 API 開頭
-@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
+@CrossOrigin(origins = "${cors.allowed.origins}", allowCredentials = "true")
 public class LiabilityController {
 
     @Autowired
