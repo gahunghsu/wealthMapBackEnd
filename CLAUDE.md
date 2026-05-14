@@ -56,8 +56,9 @@ The app reads configuration from environment variables (Railway injects these in
 | `CORS_ALLOWED_ORIGINS` | Comma-separated allowed origins |
 | `GNEWS_API_KEY` | GNews API for news fetching |
 | `FINMIND_API_TOKEN` | FinMind API for Taiwan stock data |
-| `BREVO_API_KEY` | Brevo API key for sending emails |
-| `BREVO_FROM_ADDRESS` | Verified sender address in Brevo (single sender verification, can be a Gmail) |
+| `MAILJET_API_KEY` | Mailjet API key for sending emails |
+| `MAILJET_SECRET_KEY` | Mailjet secret key for sending emails |
+| `MAILJET_FROM_ADDRESS` | Verified sender address in Mailjet (single sender verification, can be a Gmail) |
 
 ## Database
 

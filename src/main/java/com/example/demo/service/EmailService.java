@@ -18,12 +18,15 @@ import com.example.demo.repository.AlertLogRepository;
 @Service
 public class EmailService {
 
-    private static final String BREVO_API_URL = "https://api.brevo.com/v3/smtp/email";
+    private static final String MAILJET_API_URL = "https://api.mailjet.com/v3.1/send";
 
-    @Value("${brevo.api.key}")
+    @Value("${mailjet.api.key}")
     private String apiKey;
 
-    @Value("${brevo.from.address}")
+    @Value("${mailjet.secret.key}")
+    private String secretKey;
+
+    @Value("${mailjet.from.address}")
     private String fromEmail;
 
     @Autowired
@@ -34,16 +37,18 @@ public class EmailService {
     public void sendSimpleEmail(String to, String subject, String body) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.set("api-key", apiKey);
+        headers.setBasicAuth(apiKey, secretKey);
 
         Map<String, Object> payload = Map.of(
-            "sender", Map.of("email", fromEmail),
-            "to", List.of(Map.of("email", to)),
-            "subject", subject,
-            "textContent", body
+            "Messages", List.of(Map.of(
+                "From", Map.of("Email", fromEmail),
+                "To", List.of(Map.of("Email", to)),
+                "Subject", subject,
+                "TextPart", body
+            ))
         );
 
-        restTemplate.postForEntity(BREVO_API_URL, new HttpEntity<>(payload, headers), String.class);
+        restTemplate.postForEntity(MAILJET_API_URL, new HttpEntity<>(payload, headers), String.class);
         System.out.println("郵件已發送至: " + to);
     }
 
