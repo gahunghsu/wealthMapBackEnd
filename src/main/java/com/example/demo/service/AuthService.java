@@ -3,9 +3,6 @@ package com.example.demo.service;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -43,10 +40,7 @@ public class AuthService {
     private PasswordEncoder passwordEncoder;
     
     @Autowired
-    private JavaMailSender mailSender; // 💡 直接注入郵件發送器
-    
-    @Value("${spring.mail.username}")
-    private String fromEmail;
+    private EmailService emailService;
 
     // 魔法手環 (MagicBand) 的製作與燒錄機
     @Autowired
@@ -137,16 +131,9 @@ public class AuthService {
 
         // 4. 準備寄送 Email 通知使用者
         try {
-            SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom(fromEmail);
-            message.setTo(email);
-            message.setSubject("【WealthMap】您的臨時登入密碼");
-            message.setText(buildEmailContent(tempPassword));
-            
-            mailSender.send(message);
+            emailService.sendSimpleEmail(email, "【WealthMap】您的臨時登入密碼", buildEmailContent(tempPassword));
             System.out.println("✅ 臨時密碼已成功寄送至: " + email);
         } catch (Exception e) {
-            // 因為是 @Async，如果這裡失敗了，我們會記錄在後端 Console
             System.err.println("❌ 郵件發送失敗: " + e.getMessage());
         }
     }
