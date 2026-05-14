@@ -57,3 +57,11 @@ tasks.named('test') {
 springBoot {
     mainClass = 'com.example.demo.WealthmapApplication'
 }
+
+bootJar {
+    archiveFileName = 'app.jar'
+}
+
+jar {
+    enabled = false
+}
